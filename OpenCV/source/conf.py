@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'OpenCV学习文档'
+project = 'OpenCV'
 copyright = '2018, Hunag Xinyuan'
 author = 'Hunag Xinyuan'
 
