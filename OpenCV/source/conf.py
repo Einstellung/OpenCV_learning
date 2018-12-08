@@ -19,14 +19,14 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'OpenCV'
-copyright = '2018, Hunag Xinyuan'
-author = 'Hunag Xinyuan'
+project = u'OpenCV'
+copyright = u'2018, Hunag Xinyuan'
+author = u'Hunag Xinyuan'
 
 # The short X.Y version
-version = ''
+version = u''
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = u'1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -63,7 +63,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'zh_CN'
+language = u'zh_CN'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -133,8 +133,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenCV.tex', 'OpenCV Documentation',
-     'Hunag Xinyuan', 'manual'),
+    (master_doc, 'OpenCV.tex', u'OpenCV Documentation',
+     u'Hunag Xinyuan', 'manual'),
 ]
 
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'opencv', 'OpenCV Documentation',
+    (master_doc, 'opencv', u'OpenCV Documentation',
      [author], 1)
 ]
 
@@ -154,7 +154,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'OpenCV', 'OpenCV Documentation',
+    (master_doc, 'OpenCV', u'OpenCV Documentation',
      author, 'OpenCV', 'One line description of project.',
      'Miscellaneous'),
 ]
