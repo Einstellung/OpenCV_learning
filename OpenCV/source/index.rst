@@ -4,13 +4,13 @@ OpenCV学习文档
 
 .. toctree::
    :maxdepth: 5
-   :caption: 主页:
+   :glob:
    
-   OpenCV常用操作.md
-   对图像的基本操作.md
-   处理图像的常用方法.md
-   图像滤波.md
-   处理边缘.md
+   OpenCV Common Operation
+   Basic Image Operation
+   Common methods of Image Processing
+   Image Filtering
+   Edge Finish
 
 
 
