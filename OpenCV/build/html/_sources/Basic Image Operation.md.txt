@@ -87,7 +87,7 @@ cv::Mat分为两个部分，头部与数据部分。头部包含了矩阵的所�
 
 #### 常用构造函数
 
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/BC8A6A37F33E420BB8BF0464F126A527/12559)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Basic%20Image%20Operation/1.png?raw=true)
 
 最主要的是前面两三个，常用。
 
