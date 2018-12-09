@@ -2,7 +2,7 @@
 ## 卷积边界问题及其处理
 
 ### 边界问题
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/132348F8C75A4C5982F443A62B0E86B9/12898)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/1.png?raw=true)
 
 **卷积边界问题**是指的图像卷积的时候边界像素，不能被卷积操作，原因在于边界像素没有完全跟kernel重叠，所以当3x3滤波时候有1个像素（最上面一行的像素）的边缘没有被处理，5x5滤波的时候有2个像素的边缘没有被处理。
 
@@ -115,7 +115,7 @@ int main(int argc, char** argv) {
 
 delta =  f(x) – f(x-1), delta越大，说明像素在X方向变化越大，边缘信号越强。
 
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/01DFD6F4EB5C4987A3B007956197DF81/12947)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/2.png?raw=true)
 
 <center>图中从头发到脸这一段像素发生了显著的变化</center>
 
@@ -125,14 +125,14 @@ Sobel算子又被称为一阶微分算子，求导算子，在水平和垂直两
 
 Soble算子功能集合高斯平滑和微分求导。
 
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/279944C1975F4660AD60CCF263DE70A2/13007)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/3.png?raw=true)
 <center>水平梯度和垂直梯度</center>
 
 
 我们以水平梯度为例。他的水平方向上面变化十分的明显，在水平方向上给不同的权重，通过权重值来扩大差异。
 
 
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/8476D54406CD4FD8AFCC0121A9789E11/12995)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/4.png?raw=true)
 
 最终图像梯度如上图所示，一般为了让计算机算的更快一些，我们会取绝对值的形式。
 
@@ -151,13 +151,13 @@ double delta = 0
 int borderType = BORDER_DEFAULT
 )
 ```
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/626B2A95457F4E46B76DA63BBE3961A2/13027)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/5.png?raw=true)
 
 这里关于深度说一下，因为考虑两个图像像素之间的差值，可能做差之后超过255，超过255的8U灰度图像就会被截断，所以相比于输入，输出会上升一个层次。（-1就是表示选择和原先的一样）
 
 **Sobel算子改进版：Scharr**
 
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/D8E1A24E57F242D1A063B1CC53A1952D/13040)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/6.png?raw=true)
 
 
 ```c++
@@ -237,7 +237,7 @@ int main(int argc, char** argv) {
 ```
 ## Laplacian算子
 
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/E0F8FD07EEC947C3A20E48C9E801DC03/13057)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/7.png?raw=true)
 
 在二阶导数的时候，最大变化处的值为零即边缘是零值。通过二阶导数计算，依据此理论我们可以计算图像二阶导数，提取边缘。
 
@@ -316,7 +316,7 @@ Canny是边缘检测算法，在1986年提出的。是一个十分常用和实�
 
 大概这是完整的使用canny算法的流程。
 
-![image](https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/8D116ADF7AC34212BC43D7F037E41D64/13146)
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/8.png?raw=true)
 
 如图所示图片中的左侧是Sobel算子，$\theta$表示的是梯度的变化情况，看哪个方向上梯度变化更大，以此来确定角度。右图所示的就是角度区间。在每一个扇区，我们会对当前的像素和上下两个像素进行比较，如果当前的像素小于上下两个像素，那么上下两个像素保留，当前的像素舍弃，如果当前像素大于上下两个像素，那么上下两个像素被舍弃，当前像素保留。（我们只在每个扇区选择与他相近的两个像素）
 

@@ -178,7 +178,7 @@
 <span id="id2"></span><h2>卷积边界问题及其处理<a class="headerlink" href="#" title="永久链接至标题">¶</a></h2>
 <div class="section" id="">
 <span id="id3"></span><h3>边界问题<a class="headerlink" href="#" title="永久链接至标题">¶</a></h3>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/132348F8C75A4C5982F443A62B0E86B9/12898" /></p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/1.png?raw=true" /></p>
 <p><strong>卷积边界问题</strong>是指的图像卷积的时候边界像素，不能被卷积操作，原因在于边界像素没有完全跟kernel重叠，所以当3x3滤波时候有1个像素（最上面一行的像素）的边缘没有被处理，5x5滤波的时候有2个像素的边缘没有被处理。</p>
 </div>
 <div class="section" id="">
@@ -285,17 +285,17 @@
 <span id="id5"></span><h3>卷积的应用：图像边缘提取<a class="headerlink" href="#" title="永久链接至标题">¶</a></h3>
 <p>边缘是图像像素发生显著跃迁的地方，通过求一阶导数可以很好地捕捉边缘。</p>
 <p>delta =  f(x) – f(x-1), delta越大，说明像素在X方向变化越大，边缘信号越强。</p>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/01DFD6F4EB5C4987A3B007956197DF81/12947" /></p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/2.png?raw=true" /></p>
 <p><center>图中从头发到脸这一段像素发生了显著的变化</center></p>
 </div>
 <div class="section" id="sobel">
 <span id="id6"></span><h3>Sobel算子<a class="headerlink" href="#sobel" title="永久链接至标题">¶</a></h3>
 <p>Sobel算子又被称为一阶微分算子，求导算子，在水平和垂直两个方向上求导，得到图像X方法与Y方向梯度图像。它是离散微分算子（discrete differentiation operator），用来计算<strong>灰度图像</strong>的近似梯度。</p>
 <p>Soble算子功能集合高斯平滑和微分求导。</p>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/279944C1975F4660AD60CCF263DE70A2/13007" />
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/3.png?raw=true" />
 <center>水平梯度和垂直梯度</center></p>
 <p>我们以水平梯度为例。他的水平方向上面变化十分的明显，在水平方向上给不同的权重，通过权重值来扩大差异。</p>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/8476D54406CD4FD8AFCC0121A9789E11/12995" /></p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/4.png?raw=true" /></p>
 <p>最终图像梯度如上图所示，一般为了让计算机算的更快一些，我们会取绝对值的形式。</p>
 </div>
 <div class="section" id="sobelapi">
@@ -313,10 +313,10 @@ int borderType = BORDER_DEFAULT
 )
 </pre></div>
 </div>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/626B2A95457F4E46B76DA63BBE3961A2/13027" /></p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/5.png?raw=true" /></p>
 <p>这里关于深度说一下，因为考虑两个图像像素之间的差值，可能做差之后超过255，超过255的8U灰度图像就会被截断，所以相比于输入，输出会上升一个层次。（-1就是表示选择和原先的一样）</p>
 <p><strong>Sobel算子改进版：Scharr</strong></p>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/D8E1A24E57F242D1A063B1CC53A1952D/13040" /></p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/6.png?raw=true" /></p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span><span class="o">::</span><span class="n">Scharr</span> <span class="p">(</span>
 <span class="n">InputArray</span> <span class="n">Src</span> <span class="c1">// 输入图像</span>
 <span class="n">OutputArray</span> <span class="n">dst</span><span class="c1">// 输出图像，大小与输入图像一致</span>
@@ -394,7 +394,7 @@ int borderType = BORDER_DEFAULT
 </div>
 <div class="section" id="laplacian">
 <span id="laplacian"></span><h2>Laplacian算子<a class="headerlink" href="#laplacian" title="永久链接至标题">¶</a></h2>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/E0F8FD07EEC947C3A20E48C9E801DC03/13057" /></p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/7.png?raw=true" /></p>
 <p>在二阶导数的时候，最大变化处的值为零即边缘是零值。通过二阶导数计算，依据此理论我们可以计算图像二阶导数，提取边缘。</p>
 <div class="section" id="cv-laplacian">
 <span id="cv-laplacian"></span><h3>cv::Laplacian<a class="headerlink" href="#cv-laplacian" title="永久链接至标题">¶</a></h3>
@@ -469,7 +469,7 @@ int borderType = BORDER_DEFAULT
 <p><strong>非最大信号抑制</strong>是关于边缘我们只能有一个像素一个值，关于非最大值要进行一定抑制，来突出最大边缘。非最大信号抑制具体来说就是对于该方向上的点，如果不是最大信号，我们就把它去掉。</p>
 <p><strong>高低阈值连接</strong>是非最大信号抑制之后的图像都是一些像素点，需要把他们连接成线。这里如果大于最高阈值的像素，我们都要把他们保留下来，小于最大阈值的全部舍弃。然后介于最大阈值和最小阈值之间的我们会对其进行一个阈值连接。边缘连接之后就得到一个二值图像然后把他们输出。</p>
 <p>大概这是完整的使用canny算法的流程。</p>
-<p><img alt="image" src="https://note.youdao.com/yws/public/resource/68558a52c44a52cf70fa64b64a9f3baf/xmlnote/8D116ADF7AC34212BC43D7F037E41D64/13146" /></p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/8.png?raw=true" /></p>
 <p>如图所示图片中的左侧是Sobel算子，$\theta$表示的是梯度的变化情况，看哪个方向上梯度变化更大，以此来确定角度。右图所示的就是角度区间。在每一个扇区，我们会对当前的像素和上下两个像素进行比较，如果当前的像素小于上下两个像素，那么上下两个像素保留，当前的像素舍弃，如果当前像素大于上下两个像素，那么上下两个像素被舍弃，当前像素保留。（我们只在每个扇区选择与他相近的两个像素）</p>
 <div class="section" id="">
 <span id="id8"></span><h4>高低阈值的选取<a class="headerlink" href="#" title="永久链接至标题">¶</a></h4>
