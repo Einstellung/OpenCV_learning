@@ -387,4 +387,14 @@ void Canny_Demo(int, void*) {
 	imshow("output image", edge_output);
 }
 ```
+这样处理的图片最后是黑底，白色的边：
+
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/9.png?raw=true)
+
+如果翻转过来，改成白边黑底可能看起来效果会更好，我们只需要更改这个操作
+
+```c++
+imshow("output image", ~edge_output);  //~表示取反，像素取反就可以变成白底黑边了
+```
+最后说一下，影响Canny算法的主要成像因素是低阈值和高阈值之间的选择。
 

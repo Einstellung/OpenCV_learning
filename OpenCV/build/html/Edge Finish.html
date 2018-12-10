@@ -537,6 +537,13 @@ bool L2gradient // 选择 true表示是L2来归一化，否则用L1归一化（L
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>这样处理的图片最后是黑底，白色的边：</p>
+<p><img alt="image" src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Edge%20Finish/9.png?raw=true" /></p>
+<p>如果翻转过来，改成白边黑底可能看起来效果会更好，我们只需要更改这个操作</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">imshow</span><span class="p">(</span><span class="s">&quot;output image&quot;</span><span class="p">,</span> <span class="o">~</span><span class="n">edge_output</span><span class="p">);</span>  <span class="c1">//~表示取反，像素取反就可以变成白底黑边了</span>
+</pre></div>
+</div>
+<p>最后说一下，影响Canny算法的主要成像因素是低阈值和高阈值之间的选择。</p>
 </div>
 </div>
 </div>
