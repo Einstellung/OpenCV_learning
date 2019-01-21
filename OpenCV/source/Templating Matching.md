@@ -2,7 +2,8 @@
 
 ## 模板匹配介绍
 
-图1
+<img src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Templating%20Matching/1.png?raw=true"  width = "400"> 
+
 
 - 模板匹配就是在整个图像区域发现与给定子图像匹配的小块区域。
 - 所以模板匹配首先需要一个模板图像T（给定的子图像）
@@ -12,11 +13,14 @@
 ## 模板匹配用到的算法
 OpenCV中包含了六种模板匹配的算法：
 
-图2
+<img src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Templating%20Matching/2.png?raw=true"  width = "500"> 
 
-图3
 
-图4
+<img src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Templating%20Matching/3.png?raw=true"  width = "400"> 
+
+
+<img src="https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Templating%20Matching/4.png?raw=true"  width = "700"> 
+![image]()
 
 ## API介绍
 
@@ -35,7 +39,7 @@ InputArray mask=noArray()//(optional)
 )
 ```
 
-图5
+![image](https://github.com/Einstellung/OpenCV_learning/blob/master/OpenCV/images/Templating%20Matching/5.png?raw=true)
 
 ## 代码演示
 
