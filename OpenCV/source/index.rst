@@ -11,6 +11,7 @@ OpenCV学习文档
    Common methods of Image Processing
    Image Filtering
    Edge Finish
+   Templating Matching
 
 
 
