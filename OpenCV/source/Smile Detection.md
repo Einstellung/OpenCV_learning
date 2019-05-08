@@ -161,9 +161,9 @@ from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 import numpy as np
 import imutils
-import argparse
 import cv2
 import os
+import argparse
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-c", "--cascade", required= True,
@@ -199,18 +199,16 @@ while True:
     frameClone = frame.copy()  #重新克隆frame，用于接下来绘制边界框
     
     rects = detector.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30),
-                                     flags=cv2.CASCADE_SCALE_IMAGE)   # scaleFactor用来控制图像金字塔， minNeighbors表示的最小特征存在数量，比如等于5表示的是有5个特征的时候才算这个人脸匹配成功
-
- # .detectMultiScale方法返回一个四元组列表，来表示视频流的脸部矩形框
- # 刚开始的两个变量表示的是候选框x和y的位置，接下来两个变量的值表示的是候选框的宽度和高度   
+                                     flags=cv2.CASCADE_SCALE_IMAGE)
+    
     for (fX, fY, fW, fH) in rects:
-        roi = gray[fY:fY + fH, fX:fX + fW] # 提取灰度图像中的候选区域
-        roi = cv2.resize(roi, (28, 28))  # 将候选区域变成28*28像素，接下来的操作都是便于ROI用于CNN学习
+        roi = gray[fY:fY + fH, fX:fX + fW]
+        roi = cv2.resize(roi, (28, 28))
         roi = roi.astype("float") / 255.0
         roi = img_to_array(roi)
-        roi = np.expand_dims(roi, axis = 0)  # 扩展数组，在最开始的位置新加一个维度，便于Keras识别
+        roi = np.expand_dims(roi, axis = 0)
         
-        (notSmiling, smiling) = model.predict(roi)[0]  # 看概率，哪个概率大，就说明是笑还是不笑
+        (notSmiling, smiling) = model.predict(roi)[0]
         label = "Smiling" if smiling > notSmiling else "Not Smiling"
         
         cv2.putText(frameClone, label, (fX, fY - 10), cv2.FONT_HERSHEY_SIMPLEX, 
@@ -219,13 +217,13 @@ while True:
                      (0, 0, 255), 2)
         
         
-    cv2.imshow("Face", frameClone)  # 展示包含label的微笑判断
+    cv2.imshow("Face", frameClone)
     
-    if cv2.waitKey(1) & 0xFF == ord("q"):  # 如果 ‘q’被按下了，停止循环
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
         
-camera.release()   # 清空相机
-cv2.destroyAllWindows()  # 关闭所有window
+camera.release()
+cv2.destroyAllWindows()
 ```
 #### detector.detectMultiScale
 
