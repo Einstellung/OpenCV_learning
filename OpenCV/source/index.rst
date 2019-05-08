@@ -12,6 +12,7 @@ OpenCV学习文档
    Image Filtering
    Edge Finish
    Templating Matching
+   Smile Detection
 
 
 
